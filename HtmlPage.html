@@ -1,0 +1,107 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <title></title>
+	<meta charset="utf-8" />
+ <link href="StyleSheet.css" rel="stylesheet" />
+<script type="text/javascript">
+    flag = false;
+
+   
+    function getvalue()
+    {
+        moves = document.getElementById("move").value;
+        rotates = document.getElementById("rotate").value;
+        vel = document.getElementById("velocity").value;
+        start(moves,rotates,vel);
+    }
+
+    function start(Vx,Vy,Vt)
+    {
+        if (flag != false) return;
+        galGadot = document.getElementById("gal");
+        vx = Vx;
+        vy = Vy;
+        vt = Vt;
+        X = 0;
+        Y = 0;
+        t = 0;
+        dt = 33;
+        flag = setInterval("move()",dt);
+    }
+    function move() {
+
+        X = X + vx / 1000 * dt;
+        Y = Y + vy / 1000 * dt;
+        galGadot.style.left = X + "px";
+        galGadot.style.top = Y + "px";
+
+    }
+
+    function stop() {
+        clearInterval(flag);
+        X = 0;
+        Y = 0;
+        galGadot.style.left = X + "px";
+        galGadot.style.top = Y + "px";
+        flag = false;
+    }
+     
+    function ChangeBG(whichimage) {
+        document.getElementById("play").style.backgroundImage="url('" + whichimage + "')";
+        Pic = document.getElementById("play").style.backgroundImage;
+       
+    }
+</script>
+</head>
+<body>
+    
+    <div id="container">
+        <div id="images" style="height: inherit;">
+<div id="Characters">Bla</div>
+            <div id="background">
+            <table>
+                <tr>
+                 <td> <img  src="Images/sky-1286888_1280.jpg"  onclick="ChangeBG('Images/sky-1286888_1280.jpg')"/>  </td>
+                    <td><img src="Images/הורד.jpg"  onclick="ChangeBG('Images/הורד.jpg')" /></td> 
+              </tr>
+                <tr>
+                    <td>
+                        <img src="Images/imgg.jpg"  onclick="ChangeBG('Images/imgg.jpg')"/> </td>
+                    <td> <img src="Images/images.jpg"  onclick="ChangeBG('Images/images.jpg')"/> </td>
+                </tr>
+            </table></div>
+        </div>
+        <div id="main">
+            <div id="head">
+                <img src="wonderwomen/Wonder-woman-tv-logo.png" height="80" width="25" />
+            </div>
+            <div id="play" >
+                <div>
+             <img  src="wonderwomen/captain america wonder woman logo.png" class="btnstart"  onclick="getvalue()"/>
+                </div>
+                <div>
+                    <img  src="wonderwomen/gal_gadot_wonder_woman_concept.png" id="gal" />
+                </div>
+            </div>
+        </div>
+        <div id="controls">
+            <div id="Commands">Comands<br />
+            <table>
+                <tr><td >move</td>
+                   <td>rotate</td>
+                </tr>
+                <tr>
+                    <td id="move"><input type="text"  />
+                    <td id="rotate"><input type="text" />
+                </tr>
+                <tr><td >velocity</td></tr>
+                <tr><td id="velocity"><input type="text" /></td></tr>
+            </table>
+            </div>
+            <div id="Script">33333333333</div>
+        </div>
+    </div>
+</body>
+</html>
